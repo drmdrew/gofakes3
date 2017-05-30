@@ -98,7 +98,7 @@ func (s *WithCORS) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// Bucket name rewriting
 	// this is due to some inconsistencies in the AWS SDKs
 	// re := regexp.MustCompile("(127.0.0.1:\\d{1,7})|(.localhost:\\d{1,7})|(localhost:\\d{1,7})")
-	re := regexp.MustCompile("(gofakes3:\\d{1,7})|127.0.0.1:\\d{1,7})|(.localhost:\\d{1,7})|(localhost:\\d{1,7})")
+	re := regexp.MustCompile("(gofakes3:\\d{1,7})|(127.0.0.1:\\d{1,7})|(.localhost:\\d{1,7})|(localhost:\\d{1,7})")
 	bucket := re.ReplaceAllString(r.Host, "")
 	log.Println("incoming Host header: ", r.Host)
 	log.Println("bucket: ", bucket)
