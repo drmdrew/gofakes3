@@ -99,6 +99,8 @@ func (s *WithCORS) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// this is due to some inconsistencies in the AWS SDKs
 	re := regexp.MustCompile("(127.0.0.1:\\d{1,7})|(.localhost:\\d{1,7})|(localhost:\\d{1,7})")
 	bucket := re.ReplaceAllString(r.Host, "")
+	log.Println("incoming Host header: ", r.Host)
+	log.Println("bucket: ", bucket)
 	if len(bucket) > 0 {
 		log.Println("rewrite bucket ->", bucket)
 		p := r.URL.Path
