@@ -101,14 +101,14 @@ func (s *WithCORS) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	bucket := re.ReplaceAllString(r.Host, "")
 	log.Println("incoming Host header: ", r.Host)
 	log.Println("bucket: ", bucket)
-	if len(bucket) > 0 {
-		log.Println("rewrite bucket ->", bucket)
-		p := r.URL.Path
-		r.URL.Path = "/" + bucket
-		if p != "/" {
-			r.URL.Path += p
-		}
-	}
+	//if len(bucket) > 0 {
+	//	log.Println("rewrite bucket ->", bucket)
+	//	p := r.URL.Path
+	//	r.URL.Path = "/" + bucket
+	//	if p != "/" {
+	//		r.URL.Path += p
+	//	}
+	//}
 	log.Println("=>", r.URL)
 
 	s.r.ServeHTTP(w, r)
